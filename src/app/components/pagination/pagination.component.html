@@ -1,0 +1,26 @@
+<div class="container">
+  <nav aria-label="Page navigation">
+      <ul class="pagination shadow p-3 mb-5 bg-white rounded justify-content-center">
+
+        <li class="page-item " [ngClass]="{disabled: currentPage === 0}">
+            <a (click)='currentPage = currentPage - 1' class="page-link " href="#">Previous</a>
+          </li>
+          <ng-container *ngFor="let img of images ; let i = index">
+              <li class="page-item " [ngClass]='{active: i === currentPage}'>
+                  <a (click)='currentPage = i' class="page-link" href="#">{{i+1}}</a>
+              </li>
+          </ng-container>
+        <li class="page-item" [ngClass]="{disabled: currentPage === images.length - 1}">
+            <a (click)='currentPage = currentPage + 1' class="page-link" href="#">Next</a>
+          </li>
+      </ul>
+  </nav>
+  <div class="card rounded mx-auto justify-content-center shadow p-3 mb-5 bg-white" style="width: 18rem;">
+    <img class="img-wrapper"[src]="images[currentPage].url" >
+    <div class="card-body">
+      <h5 class="card-title">{{images[currentPage].title}}</h5>
+    </div>
+  </div>
+</div>
+
+
